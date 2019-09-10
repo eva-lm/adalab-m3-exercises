@@ -1,14 +1,11 @@
 import React from "react";
-import "../App.css";
+<CityImage city="Praga" />;
 
-class Destiny extends React.Component {
-  selectListener(event) {
-    alert(`Tu destino es viajar a ${event.target.value}`);
-  }
-
+class CityImage extends React.Component {
   render() {
     return (
       <div>
+        <CityImage city="Praga" />
         {label}
         <select name="select" onChange={this.selectListener}>
           <option value="Buenos Aires">Buenos Aires</option>
@@ -23,4 +20,4 @@ class Destiny extends React.Component {
 }
 const label = <label for="cities">Selecciona tu ciudad </label>;
 
-export default Destiny;
+export default CityImage;
