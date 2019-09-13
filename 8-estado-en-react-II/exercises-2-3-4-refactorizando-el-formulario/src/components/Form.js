@@ -11,20 +11,22 @@ class Form extends React.Component {
       language: ""
     };
     this.handleClick = this.handleClick.bind(this);
+    this.fileInput = React.createRef();
   }
   //evento
   handleClick(event) {
     const key = event.target.id;
     this.setState({
       [key]: event.target.value
-      //[description]: event.target.value,
-      //[language]: event.target.value
     });
   }
-
+  handleSubmit(event) {
+    event.preventDefault();
+    alert(`Selected file - ${this.fileInput.current.files[0].name}`);
+  }
   render() {
     return (
-      <form>
+      <form className="form" onSubmit={this.handleSubmit}>
         <h2>Información de la película</h2>
         <label htmlFor="title">Nombre: </label>
         <input
@@ -49,6 +51,8 @@ class Form extends React.Component {
           <option value="Inglés">Inglés</option>
           <option value="Portugués">Portugués</option>
         </select>
+        <label>Carátula película: </label>
+        <input type="file" name="upload" ref={this.fileInput}></input>
         <input type="submit" value="Enviar" />
         <div>
           <h2>Tarjeta de previsualización </h2>
@@ -58,6 +62,7 @@ class Form extends React.Component {
           <p>{this.state.description}</p>
           <h4>Idioma seleccionado</h4>
           <p>{this.state.language}</p>
+          <div className="preview">{this.state.fileInput}</div>
         </div>
       </form>
     );
